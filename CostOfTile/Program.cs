@@ -33,26 +33,24 @@ namespace CostOfTile
             decimal priceOfTile = area * tilePrice;
             Console.WriteLine($"Price of tiles is {priceOfTile}");
             Console.WriteLine($"Labour cost per hour is {LabourCostPerHour(area)}");
-
             
-            static int CalculateArea(string shape, int length, int width)
+        }
+
+        static int CalculateArea(string shape, int length, int width)
+        {
+            if (shape == "1")//Rectangle
             {
-                if (shape == "1")//Rectangle
-                {
-                    return length * width;
-                }
-                else //Triangle
-                {
-                    return (length * width) / 2;
-                }
+                return length * width;
             }
-
-            static double LabourCostPerHour(int area)
+            else //Triangle
             {
-                return (double) area / flooringPerHour *  costPerHour;
+                return (length * width) / 2;
             }
+        }
 
-
+        static double LabourCostPerHour(int area)
+        {
+            return (double)area / flooringPerHour * costPerHour;
         }
     }
 }
