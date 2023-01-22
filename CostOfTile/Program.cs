@@ -22,21 +22,21 @@ namespace CostOfTile
             Console.WriteLine("Press 1 to select rectangle and Press 2 to select Triangle");
             string input = Console.ReadLine();
             Console.WriteLine("Please enter length");
-            int length = Convert.ToInt16(Console.ReadLine());
+            double length = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Please enter Width");
-            int width = Convert.ToInt16(Console.ReadLine());
+            double width = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Please enter price per tile");
-            decimal tilePrice = Convert.ToInt16(Console.ReadLine());
-            int area = CalculateArea(input, length, width);
-            decimal priceOfTile = area * tilePrice;
+            double tilePrice = Convert.ToDouble(Console.ReadLine());
+            double area = CalculateArea(input, length, width);
+            double priceOfTile = area * tilePrice;
             Console.WriteLine($"Price of tiles is {priceOfTile}");
             Console.WriteLine($"Labour cost per hour is {LabourCostPerHour(area)}");
             
         }
 
-        static int CalculateArea(string shape, int length, int width)
+        static double CalculateArea(string shape, double length, double width)
         {
             if (shape == "1")//Rectangle
             {
@@ -48,9 +48,9 @@ namespace CostOfTile
             }
         }
 
-        static double LabourCostPerHour(int area)
+        static double LabourCostPerHour(double area)
         {
-            return (double)area / flooringPerHour * costPerHour;
+            return area / flooringPerHour * costPerHour;
         }
     }
 }
