@@ -8,17 +8,16 @@ namespace CostOfTile
 
         // Added Difficulty: Calculate how much flooring would be needed for non-rectangular rooms.
         // Also figure out how much labor costs would be given that the average flooring team can only put in 20 square feet of flooring per hour at a cost of $86.00/hr
-        static double costPerHour = 86;
-        static int flooringPerHour = 20;
+  
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome. Lets calculate price of tile!");
-            CalculatePriceOfTile();
-        }
 
-        static void CalculatePriceOfTile()
-        {
+            double costPerHour = 86;
+            int flooringPerHour = 20;
+
+            Console.WriteLine("Welcome. Lets calculate price of tile!");
+ 
             Console.WriteLine("Press 1 to select rectangle and Press 2 to select Triangle");
             string input = Console.ReadLine();
             Console.WriteLine("Please enter length");
@@ -31,8 +30,9 @@ namespace CostOfTile
             double tilePrice = Convert.ToDouble(Console.ReadLine());
             double area = CalculateArea(input, length, width);
             double priceOfTile = area * tilePrice;
+
             Console.WriteLine($"Price of tiles is {priceOfTile}");
-            Console.WriteLine($"Labour cost per hour is {LabourCostPerHour(area)}");
+            Console.WriteLine($"Labour cost per hour is {LabourCostPerHour(area, flooringPerHour, costPerHour)}");
             
         }
 
@@ -48,7 +48,7 @@ namespace CostOfTile
             }
         }
 
-        static double LabourCostPerHour(double area)
+        static double LabourCostPerHour(double area, int flooringPerHour, double costPerHour)
         {
             return area / flooringPerHour * costPerHour;
         }
